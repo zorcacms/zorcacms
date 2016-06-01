@@ -1,0 +1,20 @@
+{
+  "name": "zorcacms/zorcacms",
+  "description": "Zorca - Modern Flat-File CMS",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Zorca",
+      "email": "vs@zorca.org"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "slim/slim": "^3.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Zorca\\": "zorca"
+    }
+  }
+}
