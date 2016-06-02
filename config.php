@@ -1,5 +1,7 @@
 <?php
 
 return [
-    'mode' => 'development'
+    'config' => [
+        'mode' => 'development',
+    ]
 ];

@@ -8,9 +8,9 @@ namespace Zorca;
 
 class Config
 {
-    static function config() {
+    static function get() {
         $configFile = BASE . 'config.php';
-        if (file_exists($configFile)) return include($configFile);
+        if (file_exists($configFile)) return require($configFile);
         return false;
     }
 }

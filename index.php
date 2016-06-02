@@ -41,7 +41,7 @@ define('PUB', BASE . 'pub' . DS);
  * [en] Register the auto-loader
  * [ru] Подключаем необходимые библиотеки через автозагрузчик
  */
-require_once BASE . 'vendor' . DS . 'autoload.php';
+require BASE . 'vendor' . DS . 'autoload.php';
 
 /**
  * [en] Start engine
