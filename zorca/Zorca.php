@@ -13,5 +13,6 @@ class Zorca extends App
     public function __construct($container = [])
     {
         parent::__construct($container = []);
+        $configInit = Config::config();
     }
 }
