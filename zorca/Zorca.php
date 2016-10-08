@@ -7,19 +7,34 @@
 namespace Zorca;
 
 use Slim\App;
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
 
 class Zorca extends App
 {
     public function __construct()
     {
-        $config = Config::get();
+        $config = Config::getMain();
+        Autoload::loadExt();
         parent::__construct($config);
-        $this->get('/[{arg1}[/[{arg2}[/[{arg3}[/[{arg4}[/[{arg5}[/]]]]]]]]]]', function ($request, $response, $args) {
-            echo 'arg1 = ' . $args['arg1'] .
-                ' arg2 = ' . $args['arg2'] .
-                ' arg3 = ' . $args['arg3'] .
-                ' arg4 = ' . $args['arg4'] .
-                ' arg5 = ' . $args['arg5'];
+        $this->show();
+    }
+
+    private function show ()
+    {
+        $this->get('[/{params:.*}]', function (Request $request, Response $response, $args) {
+            $params = explode('/', $request->getAttribute('params'));
+            if ($params[0])
+            {
+                $slug = '/' . $params[0];
+            } else {
+                $slug = '/';
+            }
+            $extConfig = Config::getExt();
+            foreach ($extConfig as $extConfigItem) {
+                echo $extConfigItem['slug'];
+                if ($slug == $extConfigItem['slug']) echo 666;
+            }
         });
     }
 }

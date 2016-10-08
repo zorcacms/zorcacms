@@ -1,0 +1,9 @@
+pages:
+  key: 'pages'
+  slug: '/'
+admin:
+  key: 'admin'
+  slug: '/administrator'
+menu:
+  key: 'menu'
+  slug: ''
