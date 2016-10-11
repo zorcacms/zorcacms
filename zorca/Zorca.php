@@ -24,19 +24,18 @@ class Zorca extends App
     {
         $this->get('[/{params:.*}]', function (Request $request, Response $response, $args) {
             $params = explode('/', $request->getAttribute('params'));
-            var_dump($params);
             if ($params[0]) {
                 $slug = '/' . $params[0];
             } else {
                 $slug = '/';
+                $extAction = 'index';
             }
             $extConfig = Config::getExt();
             foreach ($extConfig as $extConfigItem) {
                 if ($slug == $extConfigItem['slug']) {
-                    echo $extConfigItem['key'];
                     $componentClass = 'Zorca\Ext\\' . ucfirst($extConfigItem['key']);
                     $extController = new $componentClass;
-                    $extController->run($extRequest, $extAction);
+                    $extController->run($extAction, $response);
                     break;
                 }
             }
