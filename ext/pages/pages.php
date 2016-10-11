@@ -6,9 +6,15 @@
 
 namespace Zorca\Ext;
 
+use ParsedownExtra;
+
 class Pages
 {
-    static function run($extRequest, $extAction) {
-        return 'Pages';
+    public function run($extRequest, $extAction) {
+        $parsedown = new ParsedownExtra();
+        $pageContentFilePath = DATA . 'ext/pages' . DS . $extAction . '.md';
+        if (!file_exists($pageContentFilePath)) {
+            $pageContentFilePath = DATA . 'ext/pages/404.md';
+        }
     }
 }
