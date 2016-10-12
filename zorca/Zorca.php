@@ -24,21 +24,28 @@ class Zorca extends App
     {
         $this->get('[/{params:.*}]', function (Request $request, Response $response, $args) {
             $params = explode('/', $request->getAttribute('params'));
-            if ($params[0]) {
-                $slug = '/' . $params[0];
+            if ($params[1]) {
+                $extSlug = $params[0];
+                $extAction = $params[1];
+            } elseif ($params[0]) {
+                $extSlug = '/';
+                $extAction = $params[0];
             } else {
-                $slug = '/';
+                $extSlug = '/';
                 $extAction = 'index';
             }
-            $extConfig = Config::getExt();
-            foreach ($extConfig as $extConfigItem) {
-                if ($slug == $extConfigItem['slug']) {
-                    $componentClass = 'Zorca\Ext\\' . ucfirst($extConfigItem['key']);
-                    $extController = new $componentClass;
-                    $extController->run($extAction, $response);
-                    break;
-                }
+            $extComponents = Config::getComp();
+            $extIndex = array_search($extSlug, array_column($extComponents, 'slug'));
+            if (isset($extIndex)) {
+                $componentKey = $extComponents[$extIndex]['key'];
+            } else {
+                $componentKey = 'pages';
+                $extAction = '404';
             }
+            $componentClass = 'Zorca\Ext\\' . ucfirst($componentKey);
+            $extController = new $componentClass;
+            $fullContent = $extController->run($extAction);
+            $response->getBody()->write($fullContent);
         });
     }
 }

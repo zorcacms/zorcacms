@@ -6,18 +6,17 @@
 
 namespace Zorca\Ext;
 
-use Slim\Http\Response;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 use ParsedownExtra;
 
 class Pages
 {
-    public function run($extAction, Response $response) {
+    public function run($extAction) {
         $parsedown = new ParsedownExtra();
         $pageContentFilePath = DATA . 'ext/pages' . DS . $extAction . '.md';
         if (!file_exists($pageContentFilePath)) {
-            $pageContentFilePath = DATA . 'ext/pages/404.md';
+            $pageContentFilePath = EXT . 'pages/data/404.md';
         }
         $pageContent = $parsedown->text(file_get_contents($pageContentFilePath));
         $templates = new Twig_Loader_Filesystem(BASE . 'design/themes/default');
@@ -26,7 +25,6 @@ class Pages
         $twigSkeleton = new Twig_Environment($skeletons);
         $skeleton = $twigSkeleton->loadTemplate('skeleton.twig');
         $fullContent = $twigTemplate->render('pages.twig', ['pageContent' => $pageContent, 'skeleton' => $skeleton]);
-        $response->getBody()->write($fullContent);
         return $fullContent;
     }
 }

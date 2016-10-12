@@ -1,9 +1,11 @@
 pages:
   key: 'pages'
+  type: 'component'
   slug: '/'
 admin:
   key: 'admin'
+  type: 'component'
   slug: '/administrator'
 menu:
   key: 'menu'
-  slug: ''
+  type: 'module'

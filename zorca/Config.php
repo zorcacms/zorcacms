@@ -21,4 +21,13 @@ class Config
         if (file_exists($configFile)) return Yaml::parse(file_get_contents($configFile));
         return false;
     }
+
+    static function getComp() {
+        $ext = self::getExt();
+        $extComp = [];
+        foreach ($ext as $extItem) {
+            if ($extItem['type'] == 'component') $extComp[] = $extItem;
+        }
+        return $extComp;
+    }
 }
