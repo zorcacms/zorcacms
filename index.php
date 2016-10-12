@@ -29,14 +29,14 @@ define('DS', '/');
 define('BASE', str_replace(DIRECTORY_SEPARATOR, DS, __DIR__ . DS));
 
 /**
- * [en] Determine the app, data, extensions, public & config directories
- * [ru] Устанавливаем папки для приложения, базы данных, расширений, паблика и конфига
+ * [en] Determine the app, config, data, extensions & public directories
+ * [ru] Устанавливаем папки для приложения, конфига, базы данных, расширений и паблика
  */
 define('APP', BASE . 'app' . DS);
+define('CONFIG', BASE . 'config' . DS);
 define('DATA', BASE . 'data' . DS);
 define('EXT', BASE . 'ext' . DS);
 define('PUB', BASE . 'pub' . DS);
-define('CONFIG', BASE . 'config' . DS);
 
 /**
  * [en] Register the auto-loader
@@ -49,4 +49,4 @@ require BASE . 'vendor' . DS . 'autoload.php';
  * [ru] Запускаем движок
  */
 $zorca = new Zorca\Zorca();
-$zorca->run();
+$zorca->start();

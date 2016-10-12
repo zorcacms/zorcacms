@@ -1,11 +1,11 @@
 pages:
-  key: 'pages'
-  type: 'component'
-  slug: '/'
+  ext_key: 'pages'
+  ext_type: 'component'
+  ext_slug: '/'
 admin:
-  key: 'admin'
-  type: 'component'
-  slug: '/administrator'
+  ext_key: 'admin'
+  ext_type: 'component'
+  ext_slug: '/administrator'
 menu:
-  key: 'menu'
-  type: 'module'
+  ext_key: 'menu'
+  ext_type: 'module'

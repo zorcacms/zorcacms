@@ -16,18 +16,18 @@ class Config
         return false;
     }
 
-    static function getExt() {
+    static function getExt($key=false) {
         $configFile = CONFIG . 'ext.yaml';
-        if (file_exists($configFile)) return Yaml::parse(file_get_contents($configFile));
-        return false;
-    }
-
-    static function getComp() {
-        $ext = self::getExt();
-        $extComp = [];
-        foreach ($ext as $extItem) {
-            if ($extItem['type'] == 'component') $extComp[] = $extItem;
+        if (file_exists($configFile)) {
+            $ext = Yaml::parse(file_get_contents($configFile));
+            if ($key) {
+                foreach ($ext as $extItem) {
+                    if ($extItem['type'] == 'component') $extComp[] = $extItem;
+                }
+                return $extComp;
+            }
+            return $ext;
         }
-        return $extComp;
+        return false;
     }
 }

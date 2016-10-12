@@ -1,4 +1,4 @@
-template_id: default
-name: Default
-description: 'Demo ZorcaCMS template.'
-author: Zorca
+theme_key: default
+theme_name: Default
+theme_description: 'Demo ZorcaCMS template.'
+theme_author: Zorca

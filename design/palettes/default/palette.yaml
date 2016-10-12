@@ -1,4 +1,4 @@
-palette_id: default
-name: Default
-description: 'Demo ZorcaCMS palette.'
-author: Zorca
+palette_key: default
+palette_name: Default
+palette_description: 'Demo ZorcaCMS palette.'
+palette_author: Zorca

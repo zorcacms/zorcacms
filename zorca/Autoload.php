@@ -11,7 +11,7 @@ class Autoload
     static function loadExt() {
         $autoloadConfig = Config::getExt();
         foreach ($autoloadConfig as $autoloadConfigItem) {
-            $autoloadClassFile = EXT . $autoloadConfigItem['key'] . DS . $autoloadConfigItem['key'] . '.php';
+            $autoloadClassFile = EXT . $autoloadConfigItem['ext_key'] . DS . $autoloadConfigItem['ext_key'] . '.php';
             if (file_exists($autoloadClassFile)) require_once($autoloadClassFile);
         }
     }

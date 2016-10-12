@@ -1,4 +1,4 @@
-skeleton_id: default
-name: Default
-description: 'Demo ZorcaCMS skeleton.'
-author: Zorca
+skeleton_key: default
+skeleton_name: Default
+skeleton_description: 'Demo ZorcaCMS skeleton.'
+skeleton_author: Zorca
